@@ -39,25 +39,6 @@ public class TestServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //super.doPost(req, resp); //To change body of generated methods, choose Tools | Templates.
-
-//        StringBuffer jb = new StringBuffer();
-//        String line = null;
-//        try {
-//            BufferedReader reader = req.getReader();
-//            while ((line = reader.readLine()) != null) {
-//                jb.append(line);
-//            }
-//        } catch (Exception e) {
-//            /*report an error*/
-//            System.err.println(e.getMessage());
-//        }
-//
-//        try {
-//            JSONObject jsonObject = HTTP.toJSONObject(jb.toString());
-//        } catch (JSONException e) {
-//            // crash and burn
-//            throw new IOException("Error parsing JSON request string");
-//        }
         Article a = new Article(req.getParameter("id"), req.getParameter("title"));
         listeArticle.add(a);
     }
@@ -65,9 +46,9 @@ public class TestServlet extends HttpServlet {
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 //        super.doDelete(req, resp); //To change body of generated methods, choose Tools | Templates.
-        String id = req.getAttribute("id").toString();
+        String id = req.getParameter("id");
         for (Article a : listeArticle) {
-            if (a.id == id) {
+            if (id.equals(a.getId())){
                 listeArticle.remove(a);
             }
         }
@@ -82,8 +63,8 @@ public class TestServlet extends HttpServlet {
         int i = 0;
 
         for (Article a : listeArticle) {
-            if (a.id == id) {
-                listeArticle.get(i).name = title;
+            if (id.equals(a.getId())) {
+                listeArticle.get(i).setName(title);
             }
             i++;
         }
