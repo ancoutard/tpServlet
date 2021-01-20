@@ -16,4 +16,8 @@
 	<servlet-name>TestServlet</servlet-name>
         <url-pattern>/testServlet</url-pattern>
     </servlet-mapping>
+    <listener>
+        <description>HttpSessionAttributeListener</description>
+        <listener-class>com.mycompany.tp1_servlet_jsp.CartListener</listener-class>
+    </listener>
 </web-app>

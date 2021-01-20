@@ -28,12 +28,18 @@ public class TestServlet extends HttpServlet {
     List<Article> listeArticle = loadList();
 
     @Override
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         try (PrintWriter out = response.getWriter()) {
             for (Article a : listeArticle) {
                 out.println(a);
             }
         }
+        List <Article> myList = new ArrayList<Article>();
+        myList.add(new Article("1", "un"));
+        myList.add(new Article("2", "deux"));
+        request.setAttribute("listeArticle",  myList);        
+        request.setAttribute("test",  "test hallo");
+        request.getServletContext().getRequestDispatcher("/article.jsp").forward(request, response);
     }
 
     @Override
