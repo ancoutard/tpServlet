@@ -12,11 +12,14 @@ package model;
 public class Article {
     
     public String id;
-    public String name;
+    public String name;    
+    public String description;
+
     
-    public Article(String id, String name) {
+    public Article(String id, String name, String description) {
         this.id = id;
         this.name = name;
+        this.description = description;
     }
 
     public String getId() {
@@ -25,6 +28,14 @@ public class Article {
 
     public void setId(String id) {
         this.id = id;
+    }
+    
+    public String getDescription() {
+        return description;
+    }
+
+    public void setdescription(String description) {
+        this.description = description;
     }
 
     public String getName() {
@@ -37,7 +48,7 @@ public class Article {
 
     @Override
     public String toString() {
-        return "Article {" + "id=" + id + ", name=" + name + '}';
+        return "Article {" + "id=" + id + ", name=" + name + "description="+ description     +'}';
     }
     
     

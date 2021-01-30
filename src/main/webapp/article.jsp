@@ -16,18 +16,12 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <%
-            List<Article> liste = (List<Article>) request.getSession().getAttribute("listeArticle");
-            liste.add(new Article("1", "un"));
-            String test = (String) request.getSession().getAttribute("test");
-
-        %>
         <h1>Hello World!</h1>
-        <c:out value="size of list : ${liste.size()}" />
-        <c:forEach var="article" items="${ liste }">
+        <c:out value="size of list : ${listeArticle.size()}" />
+        <c:forEach var="article" items="${ listeArticle }">
             <tr>
-                <td>issou</td>
-                <td><c:out value="${article.getId()}"/></td>
+                <br></br>
+                <td><c:out value="${article.getId()} : ${article.getName()} => ${article.getDescription()}"/></td>
             </tr>
         </c:forEach>
     </body>

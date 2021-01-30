@@ -11,12 +11,14 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Article;
+import model.ArticleStub;
 
 /**
  *
@@ -25,27 +27,25 @@ import model.Article;
 @WebServlet("/TestServlet")
 public class TestServlet extends HttpServlet {
 
-    List<Article> listeArticle = loadList();
+    List<Article> listeArticle = ArticleStub.getAll();
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        try (PrintWriter out = response.getWriter()) {
+        /*try (PrintWriter out = response.getWriter()) {
             for (Article a : listeArticle) {
-                out.println(a);
+                System.out.println(a);
             }
-        }
-        List <Article> myList = new ArrayList<Article>();
-        myList.add(new Article("1", "un"));
-        myList.add(new Article("2", "deux"));
-        request.setAttribute("listeArticle",  myList);        
-        request.setAttribute("test",  "test hallo");
-        request.getServletContext().getRequestDispatcher("/article.jsp").forward(request, response);
+        }*/
+        request.setAttribute("listeArticle",  listeArticle);
+        System.out.println(listeArticle); 
+       RequestDispatcher view =  request.getServletContext().getRequestDispatcher("/article.jsp");
+        view.forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //super.doPost(req, resp); //To change body of generated methods, choose Tools | Templates.
-        Article a = new Article(req.getParameter("id"), req.getParameter("title"));
+        Article a = new Article(req.getParameter("id"), req.getParameter("title"), req.getParameter("descrition"));
         listeArticle.add(a);
     }
 
@@ -77,10 +77,4 @@ public class TestServlet extends HttpServlet {
         resp.setStatus(201);
     }
 
-    public List<Article> loadList() {
-        List<Article> liste = new ArrayList<>();
-        liste.add(new Article("1", "un"));
-        liste.add(new Article("2", "deux"));
-        return liste;
-    }
 }

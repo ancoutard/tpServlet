@@ -37,8 +37,8 @@ public class CartServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             List<Article> liste = new ArrayList<>();
-            liste.add(new Article("3", "Article 3"));
-            liste.add(new Article("4", "Article 4"));
+            liste.add(new Article("3", "Article 3", "article 3 bgito"));
+            liste.add(new Article("4", "Article 4", "article 4 begito"));
 
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
