@@ -39,7 +39,7 @@ public class TestServlet extends HttpServlet {
         request.setAttribute("listeArticle",  listeArticle);
         System.out.println(listeArticle); 
        RequestDispatcher view =  request.getServletContext().getRequestDispatcher("/article.jsp");
-        view.forward(request, response);
+       view.forward(request, response);
     }
 
     @Override

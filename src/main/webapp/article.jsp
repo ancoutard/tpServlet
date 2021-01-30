@@ -16,13 +16,26 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
-        <c:out value="size of list : ${listeArticle.size()}" />
+        <h1>Mon Panier</h1>
+      
         <c:forEach var="article" items="${ listeArticle }">
             <tr>
+
                 <br></br>
                 <td><c:out value="${article.getId()} : ${article.getName()} => ${article.getDescription()}"/></td>
             </tr>
         </c:forEach>
+        
+        <form action="" method="post" >  
+            <c:forEach var="article" items="${ listeArticle }">
+                <tr>
+                    <br></br>
+                    <td><input type='checkbox' id="" name="selectedValue" value="${article.getName()} => ${article.getDescription()}"/></td>
+                </tr>
+            </c:forEach>
+             <br/>
+            <input type="submit" value="Ajouter">
+        </form>
+
     </body>
 </html>
