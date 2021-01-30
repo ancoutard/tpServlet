@@ -17,12 +17,13 @@
     </head>
     <body>
         <%
-            List<Article> liste = (List<Article>) request.getSession().getAttribute("listeArticle");            
+            List<Article> liste = (List<Article>) request.getSession().getAttribute("listeArticle");
+            liste.add(new Article("1", "un"));
             String test = (String) request.getSession().getAttribute("test");
 
         %>
         <h1>Hello World!</h1>
-        <c:out value="size of list : ${test}" />
+        <c:out value="size of list : ${liste.size()}" />
         <c:forEach var="article" items="${ liste }">
             <tr>
                 <td>issou</td>
