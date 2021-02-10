@@ -18,19 +18,18 @@
     <body>
         <h1>Mon Panier</h1>
       
-        <c:forEach var="article" items="${ listeArticle }">
+        <c:forEach var="article" items="${ listePanier }">
             <tr>
-
                 <br></br>
-                <td><c:out value="${article.getId()} : ${article.getName()} => ${article.getDescription()}"/></td>
+                <td><c:out value="${article}"/></td>
             </tr>
-        </c:forEach>
+        </c:forEach> 
         
         <form action="" method="post" >  
             <c:forEach var="article" items="${ listeArticle }">
                 <tr>
                     <br></br>
-                    <td><input type='checkbox' id="" name="selectedValue" value="${article.getName()} => ${article.getDescription()}"/></td>
+                    <td><input type='checkbox' id="${article.getId()}" name="selectedValue" value="${article.getId()} : ${article.getName()} => ${article.getDescription()}" /> <c:out value="${article.getName()} => ${article.getDescription()}"/></td>
                 </tr>
             </c:forEach>
              <br/>
